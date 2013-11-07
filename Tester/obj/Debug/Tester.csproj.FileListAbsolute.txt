@@ -1,0 +1,9 @@
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\bin\Debug\Tester.exe
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\bin\Debug\Tester.pdb
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\obj\Debug\Tester.exe
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\obj\Debug\Tester.pdb
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\obj\Debug\Tester.MainForm.resources
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\obj\Debug\Tester.csproj.GenerateResource.Cache
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\bin\Debug\aaEncryption.dll
+C:\Projects\EncryptDecrypt\aaEncryption\Tester\bin\Debug\aaEncryption.pdb
