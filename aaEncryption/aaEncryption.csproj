@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="cSecurity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleAES.cs" />
+    <Compile Include="cSimpleAES.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

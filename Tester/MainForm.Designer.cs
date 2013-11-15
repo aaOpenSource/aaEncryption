@@ -87,7 +87,7 @@ namespace Tester
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(543, 369);
+			this.ClientSize = new System.Drawing.Size(167, 50);
 			this.Controls.Add(this.decrypted);
 			this.Controls.Add(this.decrypt);
 			this.Controls.Add(this.encrypted);

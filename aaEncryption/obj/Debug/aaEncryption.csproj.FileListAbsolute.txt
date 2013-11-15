@@ -3,3 +3,8 @@ C:\Projects\EncryptDecrypt\aaEncryption\aaEncryption\bin\Debug\aaEncryption.dll
 C:\Projects\EncryptDecrypt\aaEncryption\aaEncryption\bin\Debug\aaEncryption.pdb
 C:\Projects\EncryptDecrypt\aaEncryption\aaEncryption\obj\Debug\aaEncryption.dll
 C:\Projects\EncryptDecrypt\aaEncryption\aaEncryption\obj\Debug\aaEncryption.pdb
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\obj\Debug\aaEncryption.dll
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\obj\Debug\aaEncryption.pdb
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\bin\Debug\aaEncryption.dll
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\bin\Debug\aaEncryption.pdb

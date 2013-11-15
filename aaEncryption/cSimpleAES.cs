@@ -6,39 +6,116 @@ using System.IO;
 
 namespace aaEncryption
 {
-	public class SimpleAES
+	public class cSimpleAES
 	{
 	    /*
+	     * Original source code from:
 	     * http://stackoverflow.com/questions/165808/simple-2-way-encryption-for-c
 	     */
 	
-	    // Change these keys
-	    private byte[] Vector = { 179,84,156,57,96,234,161,226,41,66,24,158,61,90,231,28,236 };
+	    // Initialize a vector with multiple integers.
+	    private byte[] Vector = {90,141,93,80,204,253,120,106,39,9,22,181,177,255,19,45,57};
 	
 	    // Get 32 Byte Array.  This translates to 256 bits which is the higest AES security level available	    
 	    private byte[] Key;
 	
 	    private ICryptoTransform EncryptorTransform, DecryptorTransform;
 	    private System.Text.UTF8Encoding UTFEncoder;
-	
-	    public SimpleAES(string StringSeed)
-	    {
-	        //This is our encryption method
-	        RijndaelManaged rm = new RijndaelManaged();
+	    
+	    
+#region constructors
+
+
+		/// <summary>
+		/// Default Constructor
+		/// </summary>
+		/// <param name="StringSeed"></param>
+	    public cSimpleAES()
+	    {	    	
+	        // Autogenerate the Key and Vector
+	    	Key = GenerateEncryptionKey();	        
+	       	Vector = GenerateEncryptionVector();	
+	        
+	        // Call the rest of the functions required to complete the constructor
+	        this.CompleteConstructor();
+	    }
+
+		/// <summary>
+		/// Select Autogeneration of Vector
+		/// </summary>
+		/// <param name="StringSeed"></param>
+	    public cSimpleAES(bool autoGenerateVector)
+	    {	    	
+	        // Autogenerate a key because the user did not pass one
+	        Key = GenerateEncryptionKey();
+	        
+	        // If we have the luxury of auto generating a vector then do that instead of using the hardcoded one
+	        if(autoGenerateVector)
+	        {
+	        	Vector = GenerateEncryptionVector();	
+	        }	        
+	        
+	        // Call the rest of the functions required to complete the constructor
+	        this.CompleteConstructor();
+	    }
+
+	    /// <summary>
+		/// Constructor with external seed for key.  Uses default vector
+		/// </summary>
+		/// <param name="StringSeed">External Seed for Key</param>
+	    public cSimpleAES(string StringSeed)
+	    {	    	
+	        // Create the fingerprint with the additional seed information
+	        Key = aaEncryption.cSecurity.FingerPrint.ValueAsByteArray(32,StringSeed);
+	        Vector = GenerateEncryptionVector();
+	        
+	        // Call the rest of the functions required to complete the constructor
+	        this.CompleteConstructor();
+	    }
+	    
+	    /// <summary>
+		/// Constructor with external seed for key.  Uses automatically generated vector if chosen.
+		/// </summary>
+		/// <param name="StringSeed">External Seed for Key</param>
+	    public cSimpleAES(string StringSeed, bool autoGenerateVector)
+	    {	    	
 
 	        // Create the fingerprint with the additional seed information
 	        Key = aaEncryption.cSecurity.FingerPrint.ValueAsByteArray(32,StringSeed);
 	        
-	        //Create an encryptor and a decryptor using our encryption method, key, and vector.
+	        if(autoGenerateVector)
+	        {
+	        	Vector = GenerateEncryptionVector();
+	        }
+	        
+	        // Call the rest of the functions required to complete the constructor
+	        this.CompleteConstructor();
+	    }
+
+#endregion
+
+	    	
+#region Utility Methods
+	    /// <summary>
+	    /// Execute common steps for all constructors
+	    /// </summary>
+	    private void CompleteConstructor()
+	    {
+	    	//This is our encryption method
+	        RijndaelManaged rm = new RijndaelManaged();
+	        
+	   		//Create an encryptor and a decryptor using our encryption method, key, and vector.
 	        EncryptorTransform = rm.CreateEncryptor(this.Key, this.Vector);
 	        DecryptorTransform = rm.CreateDecryptor(this.Key, this.Vector);
 	
 	        //Used to translate bytes to text and vice versa
-	        UTFEncoder = new System.Text.UTF8Encoding();
+	        UTFEncoder = new System.Text.UTF8Encoding();	    	
 	    }
-	    	
-	    /// -------------- Two Utility Methods (not used but may be useful) -----------
-	    /// Generates an encryption key.
+	    
+	    /// <summary>
+	    /// Generate an Encryption key using RijndaelManaged.GenerateKey()
+	    /// </summary>
+	    /// <returns></returns>
 	    static public byte[] GenerateEncryptionKey()
 	    {
 	        //Generate a Key.
@@ -47,16 +124,22 @@ namespace aaEncryption
 	        return rm.Key;
 	    }
 	
-	    /// Generates a unique encryption vector
+	    /// <summary>
+	    /// Generates a Vector using 
+	    /// </summary>
+	    /// <returns></returns>
 	    static public byte[] GenerateEncryptionVector()
 	    {
-	        //Generate a Vector
+	        //Generate a Vector RijndaelManaged.GenerateIV()
 	        RijndaelManaged rm = new RijndaelManaged();
 	        rm.GenerateIV();
 	        return rm.IV;
 	    }
-	
-	
+#endregion
+
+	    
+#region Common Methods
+
 	    /// ----------- The commonly used methods ------------------------------    
 	    /// Encrypt some text and return a string suitable for passing in a URL.
 	    public string EncryptToString(string TextValue)
@@ -164,5 +247,7 @@ namespace aaEncryption
 	        }
 	        return tempStr;
 	    }
+#endregion
+
 	}
 }
