@@ -28,8 +28,7 @@ namespace aaEncryption
 
 		/// <summary>
 		/// Default Constructor
-		/// </summary>
-		/// <param name="StringSeed"></param>
+		/// </summary>	
 	    public cSimpleAES()
 	    {	    	
 	        // Autogenerate the Key and Vector
@@ -43,7 +42,6 @@ namespace aaEncryption
 		/// <summary>
 		/// Select Autogeneration of Vector
 		/// </summary>
-		/// <param name="StringSeed"></param>
 	    public cSimpleAES(bool autoGenerateVector)
 	    {	    	
 	        // Autogenerate a key because the user did not pass one
@@ -64,8 +62,8 @@ namespace aaEncryption
 		/// </summary>
 		/// <param name="StringSeed">External Seed for Key</param>
 	    public cSimpleAES(string StringSeed)
-	    {	    	
-	        // Create the fingerprint with the additional seed information
+	    {	    	    	
+	    	// Create the fingerprint with the additional seed information
 	        Key = aaEncryption.cSecurity.FingerPrint.ValueAsByteArray(32,StringSeed);
 	        Vector = GenerateEncryptionVector();
 	        
@@ -93,8 +91,7 @@ namespace aaEncryption
 	    }
 
 #endregion
-
-	    	
+    	
 #region Utility Methods
 	    /// <summary>
 	    /// Execute common steps for all constructors

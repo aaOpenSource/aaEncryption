@@ -7,7 +7,7 @@ using System.Text;
 
 namespace aaEncryption
 {
-    class cSecurity
+    public class cSecurity
     {
 
         /// <summary>
@@ -28,11 +28,11 @@ namespace aaEncryption
                 if (string.IsNullOrEmpty(fingerPrint))
                 {
                     fingerPrint = GetHash("CPU >> " + cpuId() + "\nBIOS >> " + biosId() + "\nBASE >> " + baseId());
-                    //+"\nDISK >> "+ diskId() + "\nVIDEO >> " + videoId() +"\nMAC >> "+ macId()
                 }
                 return fingerPrint;
             }
-                       
+                    
+            
             /// <summary>
             /// Return a byte array of the specified length
             /// </summary>

@@ -1,0 +1,3 @@
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\bin\Release\aaEncryption.dll
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\obj\Release\ResolveAssemblyReference.cache
+C:\Projects\LocalRepo\aaEncryption\aaEncryption\obj\Release\aaEncryption.dll
